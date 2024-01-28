@@ -9,7 +9,6 @@ media
 staticfiles/
 files/
 404.html
-settings.py
 # Env
 .env
 migrations/
