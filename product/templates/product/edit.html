@@ -1,0 +1,53 @@
+{% load static %}
+
+<!-- Button trigger edit modal -->
+<button type="button" class="btn btn-sm btn-warning" data-toggle="modal"
+data-target="#editModal{{ product.id }}"><i class="fas fa-edit"></i><span class="d-none d-sm-inline"> Edit</span></button>
+
+<!-- Modal Edit -->
+<div class="modal fade" id="editModal{{ product.id }}" tabindex="-1" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <form method="POST" action="{% url 'update_product' product.id %}">
+                {% csrf_token %}
+                <div class="modal-header">
+                    <h5 class="modal-title" id="editModalLabel">Edit product</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="name">name</label>
+                        <input class="form-control" type="text" name="name" value="{{ product.name }}" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="price">price</label>
+                        <input class="form-control" type="number" name="price" value="{{ product.price }}" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="desc">desc</label>
+                        <textarea class="form-control" name="desc" id="desc">{{ product.desc }}</textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="img">img</label>
+                        <input class="form-control" type="text" name="img" value="{{ product.img }}">
+                    </div>
+                    <div class="form-group">
+                        <label for="category_id">category_id</label>
+                        <select class="form-control" name="category_id" id="category_id">
+                            <option disabled value="">Select a category</option>
+                            {% for category in categories %}
+                            <option value="{{ category.id }}" {% if product.category_id == category.id %} selected {% endif %}>{{ category.name }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -12,3 +12,5 @@ files/
 # Env
 .env
 migrations/
+venv/
+myenv/

@@ -1,0 +1,53 @@
+{% load static %}
+
+<!-- Button trigger create modal -->
+<button type="button" class="btn btn-sm btn-success" data-toggle="modal"
+data-target="#createModal"><i class="fas fa-plus"></i><span class="d-none d-sm-inline"> Create</span></button>
+
+<!-- Modal Create -->
+<div class="modal fade" id="createModal" tabindex="-1" role="dialog" aria-labelledby="createModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <form method="POST" action="{% url 'create_product' %}">
+                {% csrf_token %}
+                <div class="modal-header">
+                    <h5 class="modal-title" id="createModalLabel">Create product</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="name">name</label>
+                        <input class="form-control" type="text" name="name" value="{{ request.POST.name }}" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="price">price</label>
+                        <input class="form-control" type="number" name="price" value="{{ request.POST.price }}" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="desc">desc</label>
+                        <textarea class="form-control" name="desc" id="desc">{{ request.POST.desc }}</textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="img">img</label>
+                        <input class="form-control" type="file" name="img" value="{{ request.POST.img }}">
+                    </div>
+                    <div class="form-group">
+                        <label for="category_id">category_id</label>
+                        <select class="form-control" name="category_id" id="category_id">
+                            <option disabled value="">Select a category</option>
+                            {% for category in categories %}
+                            <option value="{{ category.id }}">{{ category.name }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
