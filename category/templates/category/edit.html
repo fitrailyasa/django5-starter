@@ -18,16 +18,17 @@ data-target="#editModal{{ category.id }}"><i class="fas fa-edit"></i><span class
                 </div>
                 <div class="modal-body">
                     <div class="form-group">
-                        <label for="name">name</label>
+                        <label for="name">Name</label>
                         <input class="form-control" type="text" name="name" value="{{ category.name }}" required>
                     </div>
                     <div class="form-group">
-                        <label for="desc">desc</label>
+                        <label for="desc">Description</label>
                         <textarea class="form-control" name="desc" id="desc">{{ category.desc }}</textarea>
                     </div>
                     <div class="form-group">
-                        <label for="img">img</label>
-                        <input class="form-control" type="file" name="img" value="{{ category.img }}">
+                        <label for="img">Image</label>
+                        <input class="form-control" id="image-edit" type="file" name="img" value="{{ category.img }}">
+                        <img class="img-fluid" style="max-height: 200px;" src="{% static 'profile/default.png' %}" id="edit-preview" alt="">
                     </div>
                 </div>
                 <div class="modal-footer">

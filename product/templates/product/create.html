@@ -18,29 +18,30 @@ data-target="#createModal"><i class="fas fa-plus"></i><span class="d-none d-sm-i
                 </div>
                 <div class="modal-body">
                     <div class="form-group">
-                        <label for="name">name</label>
-                        <input class="form-control" type="text" name="name" value="{{ request.POST.name }}" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="price">price</label>
-                        <input class="form-control" type="number" name="price" value="{{ request.POST.price }}" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="desc">desc</label>
-                        <textarea class="form-control" name="desc" id="desc">{{ request.POST.desc }}</textarea>
-                    </div>
-                    <div class="form-group">
-                        <label for="img">img</label>
-                        <input class="form-control" type="file" name="img" value="{{ request.POST.img }}">
-                    </div>
-                    <div class="form-group">
-                        <label for="category_id">category_id</label>
+                        <label for="category_id">Category</label>
                         <select class="form-control" name="category_id" id="category_id">
                             <option disabled value="">Select a category</option>
                             {% for category in categories %}
                             <option value="{{ category.id }}">{{ category.name }}</option>
                             {% endfor %}
                         </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input class="form-control" type="text" name="name" value="{{ request.POST.name }}" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="price">Price</label>
+                        <input class="form-control" type="number" name="price" value="{{ request.POST.price }}" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="desc">Description</label>
+                        <textarea class="form-control" name="desc" id="desc">{{ request.POST.desc }}</textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="img">Image</label>
+                        <input class="form-control" id="image-add" type="file" name="img" value="{{ request.POST.img }}">
+                        <img class="img-fluid" style="max-height: 200px;" src="{% static 'profile/default.png' %}" id="add-preview" alt="">
                     </div>
                 </div>
                 <div class="modal-footer">

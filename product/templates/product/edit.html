@@ -18,29 +18,30 @@ data-target="#editModal{{ product.id }}"><i class="fas fa-edit"></i><span class=
                 </div>
                 <div class="modal-body">
                     <div class="form-group">
-                        <label for="name">name</label>
-                        <input class="form-control" type="text" name="name" value="{{ product.name }}" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="price">price</label>
-                        <input class="form-control" type="number" name="price" value="{{ product.price }}" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="desc">desc</label>
-                        <textarea class="form-control" name="desc" id="desc">{{ product.desc }}</textarea>
-                    </div>
-                    <div class="form-group">
-                        <label for="img">img</label>
-                        <input class="form-control" type="text" name="img" value="{{ product.img }}">
-                    </div>
-                    <div class="form-group">
-                        <label for="category_id">category_id</label>
+                        <label for="category_id">Category</label>
                         <select class="form-control" name="category_id" id="category_id">
                             <option disabled value="">Select a category</option>
                             {% for category in categories %}
                             <option value="{{ category.id }}" {% if product.category_id == category.id %} selected {% endif %}>{{ category.name }}</option>
                             {% endfor %}
                         </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input class="form-control" type="text" name="name" value="{{ product.name }}" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="price">Price</label>
+                        <input class="form-control" type="number" name="price" value="{{ product.price }}" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="desc">Description</label>
+                        <textarea class="form-control" name="desc" id="desc">{{ product.desc }}</textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="img">Image</label>
+                        <input class="form-control" id="image-edit" type="file" name="img" value="{{ product.img }}">
+                        <img class="img-fluid" style="max-height: 200px;" src="{% static 'profile/default.png' %}" id="edit-preview" alt="">
                     </div>
                 </div>
                 <div class="modal-footer">
