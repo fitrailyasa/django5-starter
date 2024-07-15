@@ -7,7 +7,7 @@ from django.contrib.auth.decorators import login_required
 @login_required
 def index_category(request):
     all_categories = Category.objects.all()
-    context = {'categories': all_categories}
+    context = {'title': 'Category', 'categories': all_categories}
     return render(request, 'category/index.html', context)
 
 @login_required

@@ -10,7 +10,7 @@ from django.contrib.auth.decorators import login_required
 def index_product(request):
     all_categories = Category.objects.all()
     all_products = Product.objects.all()
-    context = {'products': all_products, 'categories': all_categories}
+    context = {'title': 'Product', 'products': all_products, 'categories': all_categories}
     return render(request, 'product/index.html', context)
 
 @login_required

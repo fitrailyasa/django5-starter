@@ -8,7 +8,7 @@ from django.contrib.auth.decorators import login_required
 def index_user(request):
     all_users = User.objects.all()
 
-    context = {'users': all_users}
+    context = {'title': 'User', 'users': all_users}
     return render(request, 'user/index.html', context)
 
 @login_required
