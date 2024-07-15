@@ -45,7 +45,11 @@
         <td>{{ product.desc }}</td>
         <td>{{ product.img }}</td>
         <td>
-          {% include 'product/edit.html' %} {% include 'product/delete.html' %}
+          <!-- Edit -->
+          {% include 'product/edit.html' %}
+
+          <!-- Delete -->
+          {% include 'product/delete.html' %}
         </td>
       </tr>
       {% endfor %}

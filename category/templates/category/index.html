@@ -41,8 +41,11 @@
         <td>{{ category.desc }}</td>
         <td>{{ category.img }}</td>
         <td>
-          {% include 'category/edit.html' %} {% include 'category/delete.html'
-          %}
+          <!-- Edit -->
+          {% include 'category/edit.html' %}
+
+          <!-- Delete -->
+          {% include 'category/delete.html' %}
         </td>
       </tr>
       {% endfor %}

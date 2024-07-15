@@ -40,7 +40,13 @@
         <td>{{ user.username }}</td>
         <td>{{ user.email }}</td>
         <!-- <td>{{ user.role }}</td> -->
-        <td>{% include 'user/edit.html' %} {% include 'user/delete.html' %}</td>
+        <td>
+          <!-- Edit -->
+          {% include 'user/edit.html' %}
+
+          <!-- Delete -->
+          {% include 'user/delete.html' %}
+        </td>
       </tr>
       {% endfor %}
     </tbody>

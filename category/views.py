@@ -13,8 +13,6 @@ def index_category(request):
 @login_required
 def create_category(request):
     if request.method == 'POST':
-        print("POST data:", request.POST)
-        print("FILES data:", request.FILES)
         form = categoryCreateForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
@@ -22,7 +20,6 @@ def create_category(request):
             return redirect('index_category')
         else:
             messages.error(request, 'Category failed to create.')
-        print("Form errors:", form.errors)
     else:
         form = categoryCreateForm()
     
