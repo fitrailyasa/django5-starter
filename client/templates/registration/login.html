@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+
+    <!-- bootstrap 5 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css">
+
+<body>
+    <div class="container-fluid">
+        <div class="card mt-5 py-5">
+            <div class="d-flex justify-content-center align-items-center mt-3">
+                <form class="" method="post">
+                    {% csrf_token %}
+                    <h2 class="">Please sign in</h2>
+                    {% if form.non_field_errors %}
+                        <div class="alert alert-danger" role="alert">
+                            {{ form.non_field_errors }}
+                        </div>
+                    {% endif %}
+                    <div class="form-group">
+                        <label for="id_username" class="">Username</label>
+                        <input type="text" class="form-control" name="username">
+                    </div>
+                    <div class="form-group">
+                        <label for="id_password" class="">Password</label>
+                        <input type="password" class="form-control" name="password">
+                    </div>
+                    <button class="btn btn-primary btn-block" type="submit">Sign in</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    <!-- bootstrap 5 -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

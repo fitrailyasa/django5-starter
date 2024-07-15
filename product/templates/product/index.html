@@ -1,60 +1,66 @@
-{% extends 'layouts/admin/table.html' %}
-{% load static %}
-{% block title %}Product Table{% endblock title %}
-{% block subtitle %}Product Table{% endblock subtitle %}
-{% block subtitle2 %}Product Table{% endblock subtitle2 %}
+<!-- Layout -->
+{% extends 'layouts/admin/table.html' %} {% load static %}
 
+<!-- Title -->
+{% block title %}Product Table{% endblock title %}
+
+<!-- Heading -->
+{% block heading %}Product{% endblock heading %}
+
+<!-- Breadcrumb -->
+{% block breadcump %}Product{% endblock breadcump %}
+
+<!-- Content -->
 {% block content %}
 <div class="container-fluid">
-    {% if messages %}
-        {% for message in messages %}
-            <div class="alert {% if message.tags == 'success' %}alert-success{% elif message.tags == 'error' %}alert-danger{% endif %}">
-                {{ message }}
-            </div>
-        {% endfor %}
-    {% endif %}
-    <div class="d-flex justify-content-end mb-3">
-        {% include 'product/create.html' %}
-    </div>
-    <table id="example1" class="table table-bordered table-striped">
-        <thead>
-            <tr>
-                <th>No</th>
-                <th>Category</th>
-                <th>Name</th>
-                <th>Price</th>
-                <th>Description</th>
-                <th>Images</th>
-                <th>Action</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for product in products %}
-                <tr>
-                    <td>{{ forloop.counter }}</td>
-                    <td>{{ product.category_id }}</td>
-                    <td>{{ product.name }}</td>
-                    <td>{{ product.price }}</td>
-                    <td>{{ product.desc }}</td>
-                    <td>{{ product.img }}</td>
-                    <td>
-                        {% include 'product/edit.html' %}
-                        {% include 'product/delete.html' %}
-                    </td>
-                </tr>
-            {% endfor %}
-        </tbody>        
-        <tfoot>
-            <tr>
-                <th>No</th>
-                <th>Category</th>
-                <th>Name</th>
-                <th>Price</th>
-                <th>Description</th>
-                <th>Images</th>
-                <th>Action</th>
-            </tr>
-        </tfoot>
-    </table>
+  {% if messages %} {% for message in messages %}
+  <div
+    class="alert {% if message.tags == 'success' %}alert-success{% elif message.tags == 'error' %}alert-danger{% endif %}"
+  >
+    {{ message }}
+  </div>
+  {% endfor %} {% endif %}
+  <div class="d-flex justify-content-end mb-3">
+    {% include 'product/create.html' %}
+  </div>
+  <table id="example1" class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <th>No</th>
+        <th>Category</th>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Description</th>
+        <th>Images</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for product in products %}
+      <tr>
+        <td>{{ forloop.counter }}</td>
+        <td>{{ product.category_id }}</td>
+        <td>{{ product.name }}</td>
+        <td>{{ product.price }}</td>
+        <td>{{ product.desc }}</td>
+        <td>{{ product.img }}</td>
+        <td>
+          {% include 'product/edit.html' %} {% include 'product/delete.html' %}
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+    <tfoot>
+      <tr>
+        <th>No</th>
+        <th>Category</th>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Description</th>
+        <th>Images</th>
+        <th>Action</th>
+      </tr>
+    </tfoot>
+  </table>
 </div>
-{% endblock content %}
+{% endblock %}

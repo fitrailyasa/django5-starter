@@ -8,7 +8,7 @@ data-target="#editModal{{ category.id }}"><i class="fas fa-edit"></i><span class
 <div class="modal fade" id="editModal{{ category.id }}" tabindex="-1" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
-            <form method="POST" action="{% url 'update_category' category.id %}">
+            <form method="POST" action="{% url 'update_category' category.id %}" enctype="multipart/form-data">
                 {% csrf_token %}
                 <div class="modal-header">
                     <h5 class="modal-title" id="editModalLabel">Edit category</h5>

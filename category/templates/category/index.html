@@ -1,54 +1,61 @@
-{% extends 'layouts/admin/table.html' %}
-{% load static %}
-{% block title %}Category Table{% endblock title %}
-{% block subtitle %}Category Table{% endblock subtitle %}
-{% block subtitle2 %}Category Table{% endblock subtitle2 %}
+<!-- Layout -->
+{% extends 'layouts/admin/table.html' %} {% load static %}
 
+<!-- Title -->
+{% block title %}Category Table{% endblock title %}
+
+<!-- Heading -->
+{% block heading %}Category{% endblock heading %}
+
+<!-- Breadcrumb -->
+{% block breadcump %}Category{% endblock breadcump %}
+
+<!-- Content -->
 {% block content %}
 <div class="container-fluid">
-    {% if messages %}
-        {% for message in messages %}
-            <div class="alert {% if message.tags == 'success' %}alert-success{% elif message.tags == 'error' %}alert-danger{% endif %}">
-                {{ message }}
-            </div>
-        {% endfor %}
-    {% endif %}
-    <div class="d-flex justify-content-end mb-3">
-        {% include 'category/create.html' %}
-    </div>
-    <table id="example1" class="table table-bordered table-striped">
-        <thead>
-            <tr>
-                <th>No</th>
-                <th>Name</th>
-                <th>Description</th>
-                <th>Images</th>
-                <th>Action</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for category in categories %}
-                <tr>
-                    <td>{{ forloop.counter }}</td>
-                    <td>{{ category.name }}</td>
-                    <td>{{ category.desc }}</td>
-                    <td>{{ category.img }}</td>
-                    <td>
-                        {% include 'category/edit.html' %}
-                        {% include 'category/delete.html' %}
-                    </td>
-                </tr>
-            {% endfor %}
-        </tbody>        
-        <tfoot>
-            <tr>
-                <th>No</th>
-                <th>Name</th>
-                <th>Description</th>
-                <th>Images</th>
-                <th>Action</th>
-            </tr>
-        </tfoot>
-    </table>
+  {% if messages %} {% for message in messages %}
+  <div
+    class="alert {% if message.tags == 'success' %}alert-success{% elif message.tags == 'error' %}alert-danger{% endif %}"
+  >
+    {{ message }}
+  </div>
+  {% endfor %} {% endif %}
+  <div class="d-flex justify-content-end mb-3">
+    {% include 'category/create.html' %}
+  </div>
+  <table id="example1" class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <th>No</th>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Images</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for category in categories %}
+      <tr>
+        <td>{{ forloop.counter }}</td>
+        <td>{{ category.name }}</td>
+        <td>{{ category.desc }}</td>
+        <td>{{ category.img }}</td>
+        <td>
+          {% include 'category/edit.html' %} {% include 'category/delete.html'
+          %}
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+    <tfoot>
+      <tr>
+        <th>No</th>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Images</th>
+        <th>Action</th>
+      </tr>
+    </tfoot>
+  </table>
 </div>
-{% endblock content %}
+{% endblock %}

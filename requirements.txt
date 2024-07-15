@@ -1,6 +1,7 @@
 asgiref==3.7.2
 Django==5.0.1
 django-adminlte-3==0.1.6
+django-debug-toolbar==4.4.6
 mysqlclient==2.2.1
 pip==23.3.2
 python-decouple==3.8

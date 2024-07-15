@@ -1,94 +1,104 @@
-{% extends 'layouts/admin/app.html' %}
-{% load static %}
-
-{% block style %}
+{% extends 'layouts/admin/app.html' %} {% load static %} {% block style %}
 <!-- DataTables -->
-<link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap4.min.css">
-<link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.9/css/responsive.bootstrap4.min.css">
-<link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.2.2/css/buttons.bootstrap4.min.css">
+<link
+  rel="stylesheet"
+  href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap4.min.css"
+/>
+<link
+  rel="stylesheet"
+  href="https://cdn.datatables.net/responsive/2.2.9/css/responsive.bootstrap4.min.css"
+/>
+<link
+  rel="stylesheet"
+  href="https://cdn.datatables.net/buttons/2.2.2/css/buttons.bootstrap4.min.css"
+/>
 
-{% endblock style %}
-
-{% block content %}
-{% endblock content %}
-
-{% block script %}
+{% endblock style %} {% block content %} {% endblock %} {% block script %}
 <script>
-    $(function() {
-        $("#example1").DataTable({
-            "responsive": true,
-            "lengthChange": true,
-            "autoWidth": true,
-            "paging": true,
-            "buttons": [{
-                    extend: 'excel',
-                    text: '<i class="fas fa-file-excel"></i> Excel',
-                    className: 'btn btn-dark mb-3',
-                    exportOptions: {
-                        columns: [':not(:last-child)']
-                    },
-                },
-                {
-                    extend: 'pdf',
-                    text: '<i class="fas fa-file-pdf"></i> PDF',
-                    className: 'btn btn-dark mb-3',
-                    exportOptions: {
-                        columns: [':not(:last-child)']
-                    },
-                },
-                {
-                    extend: 'print',
-                    text: '<i class="fas fa-print"></i> Print',
-                    className: 'btn btn-dark mb-3',
-                    exportOptions: {
-                        columns: [':not(:last-child)']
-                    },
-                }
-            ]
-        }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-    });
+  $(function () {
+    $("#example1")
+      .DataTable({
+        responsive: true,
+        lengthChange: true,
+        autoWidth: true,
+        paging: true,
+        buttons: [
+          {
+            extend: "excel",
+            text: '<i class="fas fa-file-excel"></i> Excel',
+            className: "btn btn-dark mb-3",
+            exportOptions: {
+              columns: [":not(:last-child)"],
+            },
+          },
+          {
+            extend: "pdf",
+            text: '<i class="fas fa-file-pdf"></i> PDF',
+            className: "btn btn-dark mb-3",
+            exportOptions: {
+              columns: [":not(:last-child)"],
+            },
+          },
+          {
+            extend: "print",
+            text: '<i class="fas fa-print"></i> Print',
+            className: "btn btn-dark mb-3",
+            exportOptions: {
+              columns: [":not(:last-child)"],
+            },
+          },
+        ],
+      })
+      .buttons()
+      .container()
+      .appendTo("#example1_wrapper .col-md-6:eq(0)");
+  });
 </script>
 <script>
-    function previewImageCreate() {
-        var input = document.getElementById('image-add');
-        var preview = document.getElementById('add-preview');
+  function previewImageCreate() {
+    var input = document.getElementById("image-add");
+    var preview = document.getElementById("add-preview");
 
-        if (input.files && input.files[0]) {
-            var reader = new FileReader();
+    if (input.files && input.files[0]) {
+      var reader = new FileReader();
 
-            reader.onload = function(e) {
-                preview.src = e.target.result;
-            };
+      reader.onload = function (e) {
+        preview.src = e.target.result;
+      };
 
-            reader.readAsDataURL(input.files[0]);
-        } else {
-            preview.src = "{% static 'profile/default.png' %}";
-        }
+      reader.readAsDataURL(input.files[0]);
+    } else {
+      preview.src = "{% static 'profile/default.png' %}";
     }
+  }
 
-    document.getElementById('image-add').addEventListener('change', previewImageCreate);
-    window.addEventListener('load', previewImageCreate);
+  document
+    .getElementById("image-add")
+    .addEventListener("change", previewImageCreate);
+  window.addEventListener("load", previewImageCreate);
 </script>
 <script>
-    function previewImageEdit() {
-        var input = document.getElementById('image-edit');
-        var preview = document.getElementById('edit-preview');
+  function previewImageEdit() {
+    var input = document.getElementById("image-edit");
+    var preview = document.getElementById("edit-preview");
 
-        if (input.files && input.files[0]) {
-            var reader = new FileReader();
+    if (input.files && input.files[0]) {
+      var reader = new FileReader();
 
-            reader.onload = function(e) {
-                preview.src = e.target.result;
-            };
+      reader.onload = function (e) {
+        preview.src = e.target.result;
+      };
 
-            reader.readAsDataURL(input.files[0]);
-        } else {
-            preview.src = "{% static 'profile/default.png' %}";
-        }
+      reader.readAsDataURL(input.files[0]);
+    } else {
+      preview.src = "{% static 'profile/default.png' %}";
     }
+  }
 
-    document.getElementById('image-edit').addEventListener('change', previewImageEdit);
-    window.addEventListener('load', previewImageEdit);
+  document
+    .getElementById("image-edit")
+    .addEventListener("change", previewImageEdit);
+  window.addEventListener("load", previewImageEdit);
 </script>
 <!-- DataTables -->
 <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>

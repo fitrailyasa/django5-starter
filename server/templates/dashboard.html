@@ -1,8 +1,16 @@
-{% extends 'layouts/admin/app.html' %}
-{% block title %}Dashboard{% endblock title %}
-{% block subtitle %}Dashboard{% endblock subtitle %}
-{% block subtitle2 %}Dashboard{% endblock subtitle2 %}
+<!-- Layout -->
+{% extends 'layouts/admin/table.html' %} {% load static %}
 
+<!-- Title -->
+{% block title %}Dashboard{% endblock title %}
+
+<!-- Heading -->
+{% block heading %}Dashboard{% endblock heading %}
+
+<!-- Breadcrumb -->
+{% block breadcump %}Dashboard{% endblock breadcump %}
+
+<!-- Content -->
 {% block content %}
 <div class="container-fluid">
   <!-- Small boxes (Stat box) -->

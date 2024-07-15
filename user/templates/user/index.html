@@ -1,54 +1,58 @@
-{% extends 'layouts/admin/table.html' %}
-{% load static %}
-{% block title %}User Table{% endblock title %}
-{% block subtitle %}User Table{% endblock subtitle %}
-{% block subtitle2 %}User Table{% endblock subtitle2 %}
+<!-- Layout -->
+{% extends 'layouts/admin/table.html' %} {% load static %}
 
+<!-- Title -->
+{% block title %}User Table{% endblock title %}
+
+<!-- Heading -->
+{% block heading %}User{% endblock heading %}
+
+<!-- Breadcrumb -->
+{% block breadcump %}User{% endblock breadcump %}
+
+<!-- Content -->
 {% block content %}
 <div class="container-fluid">
-    {% if messages %}
-        {% for message in messages %}
-            <div class="alert {% if message.tags == 'success' %}alert-success{% elif message.tags == 'error' %}alert-danger{% endif %}">
-                {{ message }}
-            </div>
-        {% endfor %}
-    {% endif %}
-    <div class="d-flex justify-content-end mb-3">
-        {% include 'user/create.html' %}
-    </div>
-    <table id="example1" class="table table-bordered table-striped">
-        <thead>
-            <tr>
-                <th>No</th>
-                <th>Name</th>
-                <th>Email</th>
-                <!-- <th>Role</th> -->
-                <th>Action</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for user in users %}
-                <tr>
-                    <td>{{ forloop.counter }}</td>
-                    <td>{{ user.username }}</td>
-                    <td>{{ user.email }}</td>
-                    <!-- <td>{{ user.role }}</td> -->
-                    <td>
-                        {% include 'user/edit.html' %}
-                        {% include 'user/delete.html' %}
-                    </td>
-                </tr>
-            {% endfor %}
-        </tbody>        
-        <tfoot>
-            <tr>
-                <th>No</th>
-                <th>Name</th>
-                <th>Email</th>
-                <!-- <th>Role</th> -->
-                <th>Action</th>
-            </tr>
-        </tfoot>
-    </table>
+  {% if messages %} {% for message in messages %}
+  <div
+    class="alert {% if message.tags == 'success' %}alert-success{% elif message.tags == 'error' %}alert-danger{% endif %}"
+  >
+    {{ message }}
+  </div>
+  {% endfor %} {% endif %}
+  <div class="d-flex justify-content-end mb-3">
+    {% include 'user/create.html' %}
+  </div>
+  <table id="example1" class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <th>No</th>
+        <th>Name</th>
+        <th>Email</th>
+        <!-- <th>Role</th> -->
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for user in users %}
+      <tr>
+        <td>{{ forloop.counter }}</td>
+        <td>{{ user.username }}</td>
+        <td>{{ user.email }}</td>
+        <!-- <td>{{ user.role }}</td> -->
+        <td>{% include 'user/edit.html' %} {% include 'user/delete.html' %}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+    <tfoot>
+      <tr>
+        <th>No</th>
+        <th>Name</th>
+        <th>Email</th>
+        <!-- <th>Role</th> -->
+        <th>Action</th>
+      </tr>
+    </tfoot>
+  </table>
 </div>
-{% endblock content %}
+{% endblock %}
