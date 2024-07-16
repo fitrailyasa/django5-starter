@@ -1,17 +1,17 @@
 <!-- Layout -->
-{% extends 'layouts/admin/table.html' %} {% load static %}
+{% extends 'layouts/admin/table.html' %} 
+{% load static %}
 
 <!-- Content -->
 {% block content %}
 <div class="container-fluid">
   {% if messages %} {% for message in messages %}
-  <div
-    class="alert {% if message.tags == 'success' %}alert-success{% elif message.tags == 'error' %}alert-danger{% endif %}"
-  >
+  <div class="alert {% if message.tags == 'success' %}alert-success{% elif message.tags == 'error' %}alert-danger{% endif %}">
     {{ message }}
   </div>
   {% endfor %} {% endif %}
   <div class="d-flex justify-content-end mb-3">
+    <!-- Create -->
     {% include 'product/create.html' %}
   </div>
   <table id="example1" class="table table-bordered table-striped">
@@ -27,6 +27,7 @@
       </tr>
     </thead>
     <tbody>
+      <!-- Data Table -->
       {% for product in products %}
       <tr>
         <td>{{ forloop.counter }}</td>
@@ -34,7 +35,13 @@
         <td>{{ product.name }}</td>
         <td>{{ product.price }}</td>
         <td>{{ product.desc }}</td>
-        <td>{{ product.img }}</td>
+        <td>
+          {% if product.img %}
+              <img style="max-height: 100px;" src="{{ product.img.url }}" alt="Product Image">
+          {% else %}
+              <p>No image available</p>
+          {% endif %}
+        </td>
         <td>
           <!-- Edit -->
           {% include 'product/edit.html' %}

@@ -28,7 +28,9 @@ data-target="#editModal{{ category.id }}"><i class="fas fa-edit"></i><span class
                     <div class="form-group">
                         <label for="img">Image</label>
                         <input class="form-control" id="image-edit" type="file" name="img" value="{{ category.img }}">
-                        <img class="img-fluid" style="max-height: 200px;" src="{% static 'profile/default.png' %}" id="edit-preview" alt="">
+                        {% if category.img %}
+                            <img class="img-fluid" style="max-height: 200px;" src="{{ category.img.url }}" id="" alt="">
+                        {% endif %}
                     </div>
                 </div>
                 <div class="modal-footer">

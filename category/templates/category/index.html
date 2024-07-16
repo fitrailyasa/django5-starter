@@ -1,17 +1,17 @@
 <!-- Layout -->
-{% extends 'layouts/admin/table.html' %} {% load static %}
+{% extends 'layouts/admin/table.html' %} 
+{% load static %}
 
 <!-- Content -->
 {% block content %}
 <div class="container-fluid">
   {% if messages %} {% for message in messages %}
-  <div
-    class="alert {% if message.tags == 'success' %}alert-success{% elif message.tags == 'error' %}alert-danger{% endif %}"
-  >
+  <div class="alert {% if message.tags == 'success' %}alert-success{% elif message.tags == 'error' %}alert-danger{% endif %}">
     {{ message }}
   </div>
   {% endfor %} {% endif %}
   <div class="d-flex justify-content-end mb-3">
+    <!-- Create -->
     {% include 'category/create.html' %}
   </div>
   <table id="example1" class="table table-bordered table-striped">
@@ -25,12 +25,19 @@
       </tr>
     </thead>
     <tbody>
+      <!-- Data Table -->
       {% for category in categories %}
       <tr>
         <td>{{ forloop.counter }}</td>
         <td>{{ category.name }}</td>
         <td>{{ category.desc }}</td>
-        <td>{{ category.img }}</td>
+        <td>
+          {% if category.img %}
+              <img style="max-height: 100px;" src="{{ category.img.url }}" alt="Category Image">
+          {% else %}
+              <p>No image available</p>
+          {% endif %}
+        </td>
         <td>
           <!-- Edit -->
           {% include 'category/edit.html' %}

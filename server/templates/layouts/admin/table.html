@@ -54,52 +54,6 @@
       .appendTo("#example1_wrapper .col-md-6:eq(0)");
   });
 </script>
-<script>
-  function previewImageCreate() {
-    var input = document.getElementById("image-add");
-    var preview = document.getElementById("add-preview");
-
-    if (input.files && input.files[0]) {
-      var reader = new FileReader();
-
-      reader.onload = function (e) {
-        preview.src = e.target.result;
-      };
-
-      reader.readAsDataURL(input.files[0]);
-    } else {
-      preview.src = "{% static 'profile/default.png' %}";
-    }
-  }
-
-  document
-    .getElementById("image-add")
-    .addEventListener("change", previewImageCreate);
-  window.addEventListener("load", previewImageCreate);
-</script>
-<script>
-  function previewImageEdit() {
-    var input = document.getElementById("image-edit");
-    var preview = document.getElementById("edit-preview");
-
-    if (input.files && input.files[0]) {
-      var reader = new FileReader();
-
-      reader.onload = function (e) {
-        preview.src = e.target.result;
-      };
-
-      reader.readAsDataURL(input.files[0]);
-    } else {
-      preview.src = "{% static 'profile/default.png' %}";
-    }
-  }
-
-  document
-    .getElementById("image-edit")
-    .addEventListener("change", previewImageEdit);
-  window.addEventListener("load", previewImageEdit);
-</script>
 <!-- DataTables -->
 <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap4.min.js"></script>
