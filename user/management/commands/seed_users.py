@@ -7,9 +7,9 @@ class Command(BaseCommand):
 
     def handle(self, *args, **kwargs):
         users_data = [
-            {'username': 'admin1', 'email': 'admin1@admin.com', 'password': 'password1'},
-            {'username': 'admin2', 'email': 'admin2@admin.com', 'password': 'password2'},
-            {'username': 'admin3', 'email': 'admin3@admin.com', 'password': 'password3'},
+            {'username': 'admin', 'email': 'admin@admin.com', 'password': 'password', 'is_superuser': '1'},
+            {'username': 'admin2', 'email': 'admin2@admin.com', 'password': 'password', 'is_staff': '1'},
+            {'username': 'admin3', 'email': 'admin3@admin.com', 'password': 'password', 'is_staff': '1'},
         ]
         
         for user_data in users_data:
